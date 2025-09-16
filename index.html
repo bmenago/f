@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exclusive Event Signup</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(138, 43, 226, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+        }
+        .glass-card {
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(17, 25, 40, 0.5);
+            border-radius: 16px;
+            border: 2px solid;
+            border-image: linear-gradient(135deg, #8a2be2 0%, #ff00ff 50%, #00bfff 100%) 1;
+            box-shadow: 0 0 20px rgba(138, 43, 226, 0.3);
+        }
+        .input-glass {
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.125);
+        }
+        .input-glass:focus {
+            background-color: rgba(255, 255, 255, 0.1);
+            outline: none;
+            border-color: rgba(138, 43, 226, 0.5);
+            box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #8a2be2 0%, #ff00ff 50%, #00bfff 100%);
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #8a2be2, #ff00ff, #00bfff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .btn-gradient {
+            background: linear-gradient(90deg, #8a2be2, #ff00ff, #00bfff);
+            background-size: 200% auto;
+            transition: all 0.3s ease;
+        }
+        .btn-gradient:hover {
+            background-position: right center;
+            animation: pulse 1.5s infinite;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+        .file-input-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 20px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .file-input-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="w-full max-w-md px-4">
+        <div class="glass-card p-8 shadow-2xl">
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-bold gradient-text mb-2">MENAGO x SMÓŁKA PARTY HOUSE</h1>
+                <p class="text-gray-300">Wypełnij krótki formularz zgłoszeniowy</p>
+            </div>
+
+            <form class="space-y-6">
+                <div class="file-input-wrapper">
+                    <div class="input-glass rounded-lg flex items-center justify-center py-10 px-4 transition-all duration-200 hover:bg-white/10">
+                        <input type="file" id="photo" accept="image/*" class="hidden">
+                        <label for="photo" class="file-input-button flex flex-col items-center">
+                            <i data-feather="upload" class="w-8 h-8 mb-2"></i>
+                            <span class="text-sm font-medium">Dodaj swoje zdjęcię </span>
+                            <span class="text-xs text-gray-400">PNG, JPG (max 5MB)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <label for="name" class="block text-sm font-medium mb-2">Imię</label>
+                    <input type="text" id="name" class="input-glass w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-purple-500 transition-all duration-200" placeholder="Twoje imię">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-2">Płeć</label>
+                    <div class="flex space-x-2">
+                        <button type="button" class="input-glass flex-1 py-3 rounded-lg transition-all duration-200 hover:bg-white/10 border-2 border-transparent hover:border-purple-500" onclick="selectGender(this, 'male')">
+                            <div class="flex items-center justify-center gap-2">
+                                <i data-feather="user" class="w-4 h-4"></i>
+                                <span>Mężczyzna</span>
+                            </div>
+                        </button>
+                        <button type="button" class="input-glass flex-1 py-3 rounded-lg transition-all duration-200 hover:bg-white/10 border-2 border-transparent hover:border-purple-500" onclick="selectGender(this, 'female')">
+                            <div class="flex items-center justify-center gap-2">
+                                <i data-feather="user" class="w-4 h-4"></i>
+                                <span>Kobieta</span>
+                            </div>
+                        </button>
+                    </div>
+                    <input type="hidden" id="gender" name="gender">
+                </div>
+
+                <div>
+                    <label for="instagram" class="block text-sm font-medium mb-2">Instagram</label>
+                    <div class="flex">
+                        <span class="input-glass inline-flex items-center px-3 rounded-l-lg border-r border-gray-600 text-gray-400">@</span>
+                        <input type="text" id="instagram" class="input-glass w-full px-4 py-3 rounded-r-lg focus:ring-2 focus:ring-purple-500 transition-all duration-200" placeholder="username">
+                    </div>
+                </div>
+
+                <div>
+                    <label for="phone" class="block text-sm font-medium mb-2">Phone Number</label>
+                    <input type="tel" id="phone" class="input-glass w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-purple-500 transition-all duration-200" placeholder="+48 123 456 789">
+                </div>
+
+                <div>
+                    <label for="why" class="block text-sm font-medium mb-2">Czemu ty? (Max 200 słów)</label>
+                    <textarea id="why" rows="3" class="input-glass w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-purple-500 transition-all duration-200" placeholder="Podaj nam dobry powód..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-gradient w-full py-3 px-4 rounded-lg text-white font-bold text-lg">
+                    WYŚLIJ WNIOSEK
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        feather.replace();
+        function selectGender(button, gender) {
+            document.querySelectorAll('[onclick^="selectGender"]').forEach(btn => {
+                btn.classList.remove('border-purple-500', 'bg-gradient-to-r', 'from-purple-500', 'to-pink-500');
+                btn.classList.add('border-transparent');
+            });
+            
+            button.classList.add('border-purple-500', 'bg-gradient-to-r', 'from-purple-500', 'to-pink-500');
+            button.classList.remove('border-transparent');
+            document.getElementById('gender').value = gender;
+        }
+
+        document.querySelectorAll('.input-glass').forEach(input => {
+            input.addEventListener('focus', () => {
+                input.style.boxShadow = '0 0 0 2px rgba(138, 43, 226, 0.5)';
+            });
+            input.addEventListener('blur', () => {
+                input.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
