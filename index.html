@@ -59,11 +59,24 @@
             font-family: 'Poppins', sans-serif;
             background-color: #0f172a;
             color: white;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            padding: 20px;
+            margin: 0;
+        }
+        @media (max-width: 640px) {
+            .glass-card {
+                border-radius: 12px;
+                padding: 1.5rem;
+            }
+            .input-glass, .btn-gradient {
+                padding: 0.75rem 1rem;
+            }
+            h1 {
+                font-size: 1.5rem;
+            }
         }
         .file-input-wrapper {
             position: relative;
@@ -93,16 +106,16 @@
     </style>
 </head>
 <body>
-    <div class="w-full max-w-md px-4">
-        <div class="glass-card p-8 shadow-2xl">
+    <div class="w-full px-4 mx-auto" style="max-width: 95vw;">
+        <div class="glass-card p-4 sm:p-8 shadow-2xl" style="width: 100%; max-width: 420px; margin: 0 auto;">
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-bold gradient-text mb-2">MENAGO x SMÓŁKA PARTY HOUSE</h1>
                 <p class="text-gray-300">Wypełnij krótki formularz zgłoszeniowy</p>
             </div>
 
-            <form class="space-y-6">
+            <form class="space-y-6" action="submission.html" method="GET">
                 <div class="file-input-wrapper">
-                    <div class="input-glass rounded-lg flex items-center justify-center py-10 px-4 transition-all duration-200 hover:bg-white/10">
+                    <div class="input-glass rounded-lg flex items-center justify-center py-6 sm:py-10 px-4 transition-all duration-200 hover:bg-white/10">
                         <input type="file" id="photo" accept="image/*" class="hidden">
                         <label for="photo" class="file-input-button flex flex-col items-center">
                             <i data-feather="upload" class="w-8 h-8 mb-2"></i>
@@ -114,19 +127,19 @@
 
                 <div>
                     <label for="name" class="block text-sm font-medium mb-2">Imię</label>
-                    <input type="text" id="name" class="input-glass w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-purple-500 transition-all duration-200" placeholder="Twoje imię">
+                    <input type="text" id="name" class="input-glass w-full px-4 py-2 sm:py-3 rounded-lg focus:ring-2 focus:ring-purple-500 transition-all duration-200" placeholder="Twoje imię">
                 </div>
 
                 <div>
                     <label class="block text-sm font-medium mb-2">Płeć</label>
                     <div class="flex space-x-2">
-                        <button type="button" class="input-glass flex-1 py-3 rounded-lg transition-all duration-200 hover:bg-white/10 border-2 border-transparent hover:border-purple-500" onclick="selectGender(this, 'male')">
+                        <button type="button" class="input-glass flex-1 py-2 sm:py-3 rounded-lg transition-all duration-200 hover:bg-white/10 border-2 border-transparent hover:border-purple-500" onclick="selectGender(this, 'male')">
                             <div class="flex items-center justify-center gap-2">
                                 <i data-feather="user" class="w-4 h-4"></i>
                                 <span>Mężczyzna</span>
                             </div>
                         </button>
-                        <button type="button" class="input-glass flex-1 py-3 rounded-lg transition-all duration-200 hover:bg-white/10 border-2 border-transparent hover:border-purple-500" onclick="selectGender(this, 'female')">
+                        <button type="button" class="input-glass flex-1 py-2 sm:py-3 rounded-lg transition-all duration-200 hover:bg-white/10 border-2 border-transparent hover:border-purple-500" onclick="selectGender(this, 'female')">
                             <div class="flex items-center justify-center gap-2">
                                 <i data-feather="user" class="w-4 h-4"></i>
                                 <span>Kobieta</span>
@@ -140,21 +153,21 @@
                     <label for="instagram" class="block text-sm font-medium mb-2">Instagram</label>
                     <div class="flex">
                         <span class="input-glass inline-flex items-center px-3 rounded-l-lg border-r border-gray-600 text-gray-400">@</span>
-                        <input type="text" id="instagram" class="input-glass w-full px-4 py-3 rounded-r-lg focus:ring-2 focus:ring-purple-500 transition-all duration-200" placeholder="username">
+                        <input type="text" id="instagram" class="input-glass w-full px-4 py-2 sm:py-3 rounded-r-lg focus:ring-2 focus:ring-purple-500 transition-all duration-200" placeholder="username">
                     </div>
                 </div>
 
                 <div>
                     <label for="phone" class="block text-sm font-medium mb-2">Phone Number</label>
-                    <input type="tel" id="phone" class="input-glass w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-purple-500 transition-all duration-200" placeholder="+48 123 456 789">
+                    <input type="tel" id="phone" class="input-glass w-full px-4 py-2 sm:py-3 rounded-lg focus:ring-2 focus:ring-purple-500 transition-all duration-200" placeholder="+48 123 456 789">
                 </div>
 
                 <div>
                     <label for="why" class="block text-sm font-medium mb-2">Czemu ty? (Max 200 słów)</label>
-                    <textarea id="why" rows="3" class="input-glass w-full px-4 py-3 rounded-lg focus:ring-2 focus:ring-purple-500 transition-all duration-200" placeholder="Podaj nam dobry powód..."></textarea>
+                    <textarea id="why" rows="3" class="input-glass w-full px-4 py-2 sm:py-3 rounded-lg focus:ring-2 focus:ring-purple-500 transition-all duration-200" placeholder="Podaj nam dobry powód..."></textarea>
                 </div>
 
-                <button type="submit" class="btn-gradient w-full py-3 px-4 rounded-lg text-white font-bold text-lg">
+                <button type="submit" class="btn-gradient w-full py-2 sm:py-3 px-4 rounded-lg text-white font-bold text-base sm:text-lg hover:scale-105 transition-transform duration-200">
                     WYŚLIJ WNIOSEK
                 </button>
             </form>
